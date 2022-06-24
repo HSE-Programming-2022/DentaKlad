@@ -7,12 +7,12 @@ using System.Windows;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("WpfApp4")]
+[assembly: AssemblyTitle("DentaKlad.Design")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP")]
-[assembly: AssemblyProduct("WpfApp4")]
-[assembly: AssemblyCopyright("Copyright © HP 2022")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DentaKlad.Design")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
