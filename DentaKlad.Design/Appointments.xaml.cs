@@ -49,6 +49,48 @@ namespace DentaKlad.Design
 
         }
 
+        public bool AptExists(Appointment apt)
+        {
+            if (context.Appointments.Where(a => a.DateAndTime == apt.DateAndTime & a.Client.Name == apt.Client.Name & a.Doctor.Name == apt.Doctor.Name & a.Service.Name == apt.Service.Name).Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool AptExistsByTextBoxes()
+        {
+            string dt = DateTimeBox.Text;
+            string clientName = Clients.SelectedItem.ToString();
+            string serviceName = Services.SelectedItem.ToString();
+            string doctorName = Doctors.SelectedItem.ToString();
+
+            if (context.Appointments.Where(a => a.DateAndTime.ToString() == dt & a.Client.Name == clientName & a.Service.Name == serviceName & a.Doctor.Name == doctorName).Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsTheSame(Appointment apt)
+        {
+            if (DateTimeBox.Text == apt.DateAndTime.ToString() & Clients.SelectedItem.ToString() == apt.Client.Name & Doctors.SelectedItem.ToString() == apt.Doctor.Name & Services.SelectedItem.ToString() == apt.Service.Name)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             if (AptTable.SelectedItem != null)
@@ -68,6 +110,7 @@ namespace DentaKlad.Design
             if (!DateTime.TryParse(DateTimeBox.Text, out DateTime dt) | dt <= DateTime.Now)
             {
                 DateTimeBox.Clear();
+                DateTimeBox.Focus();
             }
             if (!listBoxes.Where(b => b.SelectedItem == null).Any() & !String.IsNullOrEmpty(DateTimeBox.Text))
             {
@@ -86,5 +129,45 @@ namespace DentaKlad.Design
                 }
             }
         }
+
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(AptTable.SelectedItem.ToString().Split()[3].TrimEnd(','));
+            var service = context.Appointments.Where(apt => apt.Id == index).FirstOrDefault();
+            listBoxes[0].SelectedItem = service.Client.Name;
+            listBoxes[1].SelectedItem = service.Doctor.Name;
+            listBoxes[2].SelectedItem = service.Service.Name;
+            DateTimeBox.Text = service.DateAndTime.ToString();
+        }
+
+        private void Button_Click_SaveChanges(object sender, RoutedEventArgs e)
+        {
+            if (!DateTime.TryParse(DateTimeBox.Text, out DateTime dt) | dt <= DateTime.Now)
+            {
+                DateTimeBox.Clear();
+                DateTimeBox.Focus();
+            }
+            if (!listBoxes.Where(b => b.SelectedItem == null).Any() & !String.IsNullOrEmpty(DateTimeBox.Text))
+            {
+                int index = int.Parse(AptTable.SelectedItem.ToString().Split()[3].TrimEnd(','));
+                var selectedAppointment = context.Appointments.Where(a => a.Id == index).FirstOrDefault();
+                if (!AptExistsByTextBoxes() | IsTheSame(selectedAppointment))
+                {
+                    selectedAppointment.DateAndTime =DateTime.Parse(DateTimeBox.Text);
+                    selectedAppointment.Client = context.Clients.Where(c => c.Name == Clients.SelectedItem.ToString()).FirstOrDefault();
+                    selectedAppointment.Doctor = context.Doctors.Where(d => d.Name == Doctors.SelectedItem.ToString()).FirstOrDefault();
+                    selectedAppointment.Service = context.Services.Where(s => s.Name == Services.SelectedItem.ToString()).FirstOrDefault();
+
+                    DateTimeBox.Clear();
+                    context.SaveChanges();
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Информация об этой записи уже есть.");
+                }
+            }
+        }
+
     }
 }

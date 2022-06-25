@@ -73,7 +73,6 @@ namespace DentaKlad.Design
                 return false;
             }
         }
-
         
         public bool IsTheSame(Service service)
         {
