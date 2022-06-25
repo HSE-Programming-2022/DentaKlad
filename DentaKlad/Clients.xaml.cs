@@ -1,4 +1,5 @@
 ﻿using DentaKlad.Core;
+using DentaKlad.Core.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace DentaKlad.Design
     /// </summary>
     public partial class Clients : Window
     {
-        Context context;
+        ApplicationContext context;
         List<TextBox> textBoxes;
         public Clients()
         {
@@ -42,31 +43,13 @@ namespace DentaKlad.Design
 
         public void LoadData()
         {
-            context = new Context();
+            context = new ApplicationContext();
             ClientTable.ItemsSource = context.Clients.ToList();
         }
 
         public bool ClientExists(Client client)
         {
             if (context.Clients.Where(c => c.Name == client.Name & c.PhoneNumber == client.PhoneNumber & c.Email == client.Email & c.SeriesAndNumber == client.SeriesAndNumber & c.Address == client.Address).Any())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool ClientExistsByTextBoxes()
-        {
-            string name = textBoxes[0].Text;
-            string number = textBoxes[1].Text;
-            string email = textBoxes[2].Text;
-            string sn = textBoxes[3].Text;
-            string address = textBoxes[4].Text;
-
-            if (context.Clients.Where(c => c.Name == name & c.PhoneNumber == number & c.Email == email & c.SeriesAndNumber == sn & c.Address == address).Any())
             {
                 return true;
             }
@@ -142,7 +125,7 @@ namespace DentaKlad.Design
         {
             if (ClientTable.SelectedItem != null & !textBoxes.Where(b => String.IsNullOrEmpty(b.Text)).Any())
             {
-                if (!ClientExistsByTextBoxes() | IsTheSame(ClientTable.SelectedItem as Client))
+                if (!ClientExists(ClientTable.SelectedItem as Client) | IsTheSame(ClientTable.SelectedItem as Client))
                 {
                     (ClientTable.SelectedItem as Client).Name = textBoxes[0].Text;
                     (ClientTable.SelectedItem as Client).PhoneNumber = textBoxes[1].Text;
@@ -158,10 +141,11 @@ namespace DentaKlad.Design
                 }
                 else
                 {
-                    MessageBox.Show("Информация об этом клиенте уже есть.");
+                    MessageBox.Show("Информация об этом отделении уже есть.");
                 }
             }
         }
+
 
     }
 }
