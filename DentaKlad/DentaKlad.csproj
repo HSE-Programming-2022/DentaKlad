@@ -137,6 +137,10 @@
     <Compile Include="Migrations\202206250903579_addUser.designer.cs">
       <DependentUpon>202206250903579_addUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206251204001_AddClasses.cs" />
+    <Compile Include="Migrations\202206251204001_AddClasses.designer.cs">
+      <DependentUpon>202206251204001_AddClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -153,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202206250903579_addUser.resx">
       <DependentUpon>202206250903579_addUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206251204001_AddClasses.resx">
+      <DependentUpon>202206251204001_AddClasses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
