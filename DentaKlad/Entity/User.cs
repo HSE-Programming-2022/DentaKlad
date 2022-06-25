@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,10 +9,15 @@ using System.Threading.Tasks;
 namespace DentaKlad.Entity
 {
     //Класс пользователей для работы в приложении
-    internal class User
+    public class User
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        
+        [Required, Index(IsUnique = true), MinLength(1), MaxLength(40)]
         public string Username { get; set; }
-
+        
+        [Required]
         public string Password { get; set; }
     }
 }
