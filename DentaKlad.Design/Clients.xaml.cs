@@ -46,6 +46,30 @@ namespace DentaKlad.Design
             ClientTable.ItemsSource = context.Clients.ToList();
         }
 
+        public bool ClientExists(Client client)
+        {
+            if (context.Clients.Where(c => c.Name == client.Name & c.PhoneNumber == client.PhoneNumber & c.Email == client.Email & c.SeriesAndNumber == client.SeriesAndNumber & c.Address == client.Address).Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IsTheSame(Client client)
+        {
+            if (textBoxes[0].Text == client.Name & textBoxes[1].Text == client.PhoneNumber & textBoxes[2].Text == client.Email & textBoxes[3].Text == client.SeriesAndNumber & textBoxes[4].Text == client.Address)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             if (ClientTable.SelectedItem != null)
@@ -74,7 +98,7 @@ namespace DentaKlad.Design
                 {
                     textBox.Clear();
                 }
-                if (context.Clients.Where(c => c.Name == newClient.Name & c.PhoneNumber == newClient.PhoneNumber & c.Email == newClient.Email & c.SeriesAndNumber == newClient.SeriesAndNumber & c.Address == newClient.Address).Any())
+                if (ClientExists(newClient))
                 {
                     MessageBox.Show("Информация об этом клиенте уже есть.");
                 }
@@ -87,6 +111,40 @@ namespace DentaKlad.Design
             }
         }
 
-        
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+            textBoxes[0].Text = (ClientTable.SelectedItem as Client).Name;
+            textBoxes[1].Text = (ClientTable.SelectedItem as Client).PhoneNumber;
+            textBoxes[2].Text = (ClientTable.SelectedItem as Client).Email;
+            textBoxes[3].Text = (ClientTable.SelectedItem as Client).SeriesAndNumber;
+            textBoxes[4].Text = (ClientTable.SelectedItem as Client).Address;
+        }
+
+        private void Button_Click_SaveChanges(object sender, RoutedEventArgs e)
+        {
+            if (ClientTable.SelectedItem != null & !textBoxes.Where(b => String.IsNullOrEmpty(b.Text)).Any())
+            {
+                if (!ClientExists(ClientTable.SelectedItem as Client) | IsTheSame(ClientTable.SelectedItem as Client))
+                {
+                    (ClientTable.SelectedItem as Client).Name = textBoxes[0].Text;
+                    (ClientTable.SelectedItem as Client).PhoneNumber = textBoxes[1].Text;
+                    (ClientTable.SelectedItem as Client).Email = textBoxes[2].Text;
+                    (ClientTable.SelectedItem as Client).SeriesAndNumber = textBoxes[3].Text;
+                    (ClientTable.SelectedItem as Client).Address = textBoxes[4].Text;
+                    foreach (TextBox textBox in textBoxes)
+                    {
+                        textBox.Clear();
+                    }
+                    context.SaveChanges();
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Информация об этом отделении уже есть.");
+                }
+            }
+        }
+
+
     }
 }

@@ -68,5 +68,29 @@ namespace DentaKlad.Design
                 MessageBox.Show("Информация об этом отделении уже есть.");
             }
         }
+
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+            NameBox.Text = (DeptTable.SelectedItem as Department).Name;
+        }
+
+        private void Button_Click_SaveChanges(object sender, RoutedEventArgs e)
+        {
+            if (DeptTable.SelectedItem != null & !String.IsNullOrEmpty(NameBox.Text))
+            {
+                if (!context.Departments.Where(d => d.Name == NameBox.Text).Any() | NameBox.Text == (DeptTable.SelectedItem as Department).Name)
+                {
+                    (DeptTable.SelectedItem as Department).Name = NameBox.Text;
+                    NameBox.Clear();
+                    context.SaveChanges();
+                    LoadData();
+                }
+                else
+                {
+                    NameBox.Clear();
+                    MessageBox.Show("Информация об этом отделении уже есть.");
+                }
+            }            
+        }
     }
 }
