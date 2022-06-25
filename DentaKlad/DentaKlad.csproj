@@ -121,6 +121,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ApplicationContext.cs" />
+    <Compile Include="Entity\Appointment.cs" />
+    <Compile Include="Entity\Client.cs" />
+    <Compile Include="Entity\Department.cs" />
+    <Compile Include="Entity\Doctor.cs" />
+    <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
