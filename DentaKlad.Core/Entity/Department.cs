@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DentaKlad.Entity
+namespace DentaKlad.Core.Entity
 {
-    public class Doctor
+    public class Department
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Doctor(string name)
+
+        public Department()
         {
-            Name = name;
+
         }
 
-        public Doctor()
+        public Department(string name)
         {
-
+            Name = name;
         }
     }
 }

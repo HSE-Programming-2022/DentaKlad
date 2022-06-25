@@ -1,4 +1,4 @@
-﻿namespace DentaKlad.Migrations
+﻿namespace DentaKlad.Core.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
