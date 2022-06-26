@@ -41,20 +41,20 @@ namespace DentaKlad.Design
 
         private void Button_Click_Services(object sender, RoutedEventArgs e)
         {
-            //Services services = new Services();
-            //services.Show();
+            Services services = new Services();
+            services.Show();
         }
 
         private void Button_Click_Doctors(object sender, RoutedEventArgs e)
         {
-            //Doctor doctors = new Doctors();
-            //doctors.Show();
+            Doctors doctors = new Doctors();
+            doctors.Show();
         }
 
         private void Button_Click_Appointments(object sender, RoutedEventArgs e)
         {
-            //Appointments appointment = new Appointments();
-            //appointment.Show();
+            Appointments appointment = new Appointments();
+            appointment.Show();
         }
     }
 }

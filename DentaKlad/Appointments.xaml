@@ -1,0 +1,24 @@
+﻿<Window x:Class="DentaKlad.Design.Appointments"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DentaKlad.Design"
+        mc:Ignorable="d"
+        Title="Appointments" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="DateTimeBox" HorizontalAlignment="Left" Height="21" Margin="148,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
+        <DataGrid Name="AptTable" HorizontalAlignment="Left" Height="188" Margin="0,236,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="548,36,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete"/>
+        <ListBox Name="Clients" HorizontalAlignment="Left" Height="47" Margin="148,36,0,0" VerticalAlignment="Top" Width="312"/>
+        <ListBox x:Name="Services" HorizontalAlignment="Left" Height="47" Margin="148,107,0,0" VerticalAlignment="Top" Width="312"/>
+        <ListBox x:Name="Doctors" HorizontalAlignment="Left" Height="47" Margin="148,171,0,0" VerticalAlignment="Top" Width="312"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="22" Margin="514,194,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_Add"/>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Дата и время"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Клиент"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Услуга"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Врач"/></TextBlock>
+        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="681,154,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_Edit"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Height="24" Margin="681,194,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_SaveChanges"/>
+    </Grid>
+</Window>
