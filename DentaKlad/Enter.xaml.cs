@@ -1,27 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DentaKlad.Entity;
-using System.Windows.Navigation;
+using DentaKlad.Core.Entity;
 
-namespace DentaKlad
+namespace DentaKlad.Design
 {
     /// <summary>
     /// Логика взаимодействия для Enter.xaml
     /// </summary>
     public partial class Enter : Window
     {
-        User user = new User("Yura Sanochkin", "thebest");
+        User user = new User("Test", "test");
         public Enter()
         {
             InitializeComponent();
@@ -38,7 +28,7 @@ namespace DentaKlad
                 hint.Foreground = Brushes.Red;
                 hint.Text = "Данные заполнены не полностью";
             }
-            else if (login.Text != user.username || password.Password != user.password)
+            else if (login.Text != user.Username || password.Password != user.Password)
             {
                 login.Text = "";
                 password.Password = "";
@@ -46,19 +36,23 @@ namespace DentaKlad
                 password.Foreground = Brushes.Red;
                 hint.Foreground = Brushes.Red;
                 hint.Text = "Данные заполнены некорректно";
+
             }
-            else if (login.Text == user.username || password.Password == user.password)
+            else if (login.Text == user.Username || password.Password == user.Password)
             {
                 login.Foreground = Brushes.Green;
                 password.Foreground = Brushes.Green;
                 hint.Foreground = Brushes.Green;
                 hint.Text = "Данные заполнены корректно!";
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
         }
 
         private void Button_help(object sender, RoutedEventArgs e) 
         {
-            MessageBox.Show($"Login: {user.username}{Environment.NewLine}Password: {user.password}", "Помощь", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show($"Login: {user.Username}{Environment.NewLine}Password: {user.Password}", "Помощь", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void MouseDownstackpanel(object sender, MouseButtonEventArgs e)
