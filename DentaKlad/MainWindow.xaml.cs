@@ -29,8 +29,8 @@ namespace DentaKlad.Design
 
         private void Button_Click_Depts(object sender, RoutedEventArgs e)
         {
-            //Departments departments = new Departments();
-            //departments.Show();
+            Departments departments = new Departments();
+            departments.Show();
         }
 
         private void Button_Click_Clients(object sender, RoutedEventArgs e)
