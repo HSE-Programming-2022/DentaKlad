@@ -141,6 +141,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Doctors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Enter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -162,6 +166,9 @@
     </Compile>
     <Compile Include="Departments.xaml.cs">
       <DependentUpon>Departments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors.xaml.cs">
+      <DependentUpon>Doctors.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enter.xaml.cs">
       <DependentUpon>Enter.xaml</DependentUpon>
