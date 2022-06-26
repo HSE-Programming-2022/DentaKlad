@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DentaKlad.Entity
+namespace DentaKlad.Core.Entity
 {
     //Класс пользователей для работы в приложении
     public class User

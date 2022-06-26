@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DentaKlad.Core;
+using DentaKlad.Core.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DentaKlad.Entity;
 
-namespace DentaKlad
+namespace DentaKlad.Design
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -24,35 +25,36 @@ namespace DentaKlad
         public MainWindow()
         {
             InitializeComponent();
-            Recording recording = new Recording();
         }
 
-        public class Recording
+        private void Button_Click_Depts(object sender, RoutedEventArgs e)
         {
-            public string id { get; set; }
-            public string name { get; set; }
-            public string date { get; set; }
-            public string time { get; set; }
-            public string doctor { get; set; }
-            public string service { get; set; }
-
-
+            //Departments departments = new Departments();
+            //departments.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Clients(object sender, RoutedEventArgs e)
         {
-            
+            Clients clients = new Clients();
+            clients.Show();
         }
 
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        private void Button_Click_Services(object sender, RoutedEventArgs e)
         {
-            Recording recording = new Recording();
-            recording.name = nameTB.Text;
-            recording.date = dateTB.Text;
-            recording.time = timeTB.Text;
-            recording.doctor = doctorTB.Text;
-            recording.service = serviceTB.Text;
-            bd.Items.Add(recording);
+            //Services services = new Services();
+            //services.Show();
+        }
+
+        private void Button_Click_Doctors(object sender, RoutedEventArgs e)
+        {
+            //Doctor doctors = new Doctors();
+            //doctors.Show();
+        }
+
+        private void Button_Click_Appointments(object sender, RoutedEventArgs e)
+        {
+            //Appointments appointment = new Appointments();
+            //appointment.Show();
         }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using DentaKlad.Entity;
+using DentaKlad.Core.Entity;
 using MySql.Data.EntityFramework;
 
-namespace DentaKlad
+namespace DentaKlad.Core
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class ApplicationContext : DbContext
