@@ -100,6 +100,7 @@
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="Entity\Appointment.cs" />
     <Compile Include="Entity\Client.cs" />
+    <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Department.cs" />
     <Compile Include="Entity\Doctor.cs" />
     <Compile Include="Entity\Service.cs" />
@@ -112,6 +113,10 @@
     <Compile Include="Migrations\202206251204001_AddClasses.Designer.cs">
       <DependentUpon>202206251204001_AddClasses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206271450003_AddComment.cs" />
+    <Compile Include="Migrations\202206271450003_AddComment.designer.cs">
+      <DependentUpon>202206271450003_AddComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206251204001_AddClasses.resx">
       <DependentUpon>202206251204001_AddClasses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206271450003_AddComment.resx">
+      <DependentUpon>202206271450003_AddComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
