@@ -22,11 +22,11 @@ namespace DentaKlad.Design
     public partial class Appointments : Window
     {
         ApplicationContext context;
-        List<ListBox> listBoxes;
+        List<ComboBox> listBoxes;
         public Appointments()
         {
             InitializeComponent();
-            listBoxes = new List<ListBox>
+            listBoxes = new List<ComboBox>
             {
                 Clients,
                 Doctors,
