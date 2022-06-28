@@ -29,9 +29,9 @@
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2">
             <Button Content="Добавить" Margin="10" Click="Button_Click_Add"/>
-            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit"/>
+            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=ClientTable, Path=SelectedItems.Count}"/>
+            <Button Content="Удалить" Margin="10" Click="Button_Click_Delete" IsEnabled="{Binding ElementName=ClientTable, Path=SelectedItems.Count}"/>
             <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges"/>
-            <Button Content="Удалить" Margin="10" Click="Button_Click_Delete"/>
         </StackPanel>
     </Grid>
 </Window>
