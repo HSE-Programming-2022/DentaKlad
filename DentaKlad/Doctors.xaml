@@ -4,15 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DentaKlad.Design"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Doctors" Height="450" Width="800">
+        Title="Doctors" Height="600" Width="800">
     <Grid>
-        <TextBox Name="NameBox" HorizontalAlignment="Left" Height="30" Margin="26,25,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="182"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="24" Margin="240,40,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_Add"/>
-        <DataGrid Name="DoctorTable" HorizontalAlignment="Center" Height="232" Margin="0,115,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="559,56,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="240,81,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_Edit"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Height="24" Margin="370,81,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_SaveChanges"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="190*"/>
+            <RowDefinition Height="350*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name ="DoctorTable" Grid.Row="2" Grid.ColumnSpan="5" Margin="10,10,10,10" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,15,15,15">
+            <TextBox Name="NameBox" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" materialDesign:HintAssist.Hint ="ФИО" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button Content="Добавить" Margin="10" Click="Button_Click_Add"/>
+            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit"/>
+            <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges"/>
+            <Button Content="Удалить" Margin="10" Click="Button_Click_Delete"/>
+        </StackPanel>
 
     </Grid>
 </Window>
