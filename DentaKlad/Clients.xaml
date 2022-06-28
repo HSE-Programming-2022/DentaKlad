@@ -4,63 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DentaKlad.Design"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Clients" Height="450" Width="800">
+        Title="Clients" Height="600" Width="800">
     <Grid>
-        <DataGrid Name ="ClientTable"  HorizontalAlignment="Center" Height="196" Margin="0,199,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="584,31,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete"/>
-        <TextBox Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="148,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="NumberBox" HorizontalAlignment="Left" Height="21" Margin="148,46,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="EmailBox" HorizontalAlignment="Left" Height="21" Margin="148,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="SNBox" HorizontalAlignment="Left" Height="21" Margin="148,123,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="AddressBox" HorizontalAlignment="Left" Height="21" Margin="148,162,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBlock TextWrapping="Wrap" Margin="19,10,721,409" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Language="ru-ru" Text="ФИО"/></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="66,49,674,370" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Language="ru-ru" Text="Телефон"/></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="66,84,674,335" RenderTransformOrigin="0.5,0.5" Text="Email">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="32,117,674,281" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Text="Серия и номер "/><LineBreak/><Run Language="ru-ru" Text="паспорта"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="66,165,674,254" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Language="ru-ru" Text="Адрес"/></TextBlock>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="27" Margin="548,104,0,0" VerticalAlignment="Top" Width="102" Click="Button_Click_Add"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Height="27" Margin="664,104,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click_Edit"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Height="26" Margin="608,146,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_SaveChanges"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid Name ="ClientTable" Grid.Row="1" Grid.ColumnSpan="5" Margin="10" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="15">
+            <TextBox Name="NameBox" TextWrapping="Wrap" Text="TextBox" materialDesign:HintAssist.Hint ="ФИО" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Name="NumberBox" TextWrapping="Wrap" Text="TextBox" materialDesign:HintAssist.Hint ="Номер Телефона" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Name="EmailBox" TextWrapping="Wrap" Text="TextBox" materialDesign:HintAssist.Hint ="E-mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Name="SNBox" TextWrapping="Wrap" Text="TextBox" materialDesign:HintAssist.Hint ="Серия и номер паспорта" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Name="AddressBox" TextWrapping="Wrap" Text="TextBox" materialDesign:HintAssist.Hint ="Адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2">
+            <Button Content="Добавить" Margin="10" Click="Button_Click_Add"/>
+            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit"/>
+            <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges"/>
+            <Button Content="Удалить" Margin="10" Click="Button_Click_Delete"/>
+        </StackPanel>
     </Grid>
 </Window>
