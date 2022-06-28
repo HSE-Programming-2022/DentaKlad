@@ -103,6 +103,7 @@
     <Compile Include="Entity\Comment.cs" />
     <Compile Include="Entity\Department.cs" />
     <Compile Include="Entity\Doctor.cs" />
+    <Compile Include="Entity\md5.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Migrations\202206250903579_addUser.cs" />

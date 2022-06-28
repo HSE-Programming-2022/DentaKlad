@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Отделения" HorizontalAlignment="Left" Height="32" Margin="49,83,0,0" VerticalAlignment="Top" Width="67" Click="Button_Click_Depts"/>
-        <Button Content="Клиенты" HorizontalAlignment="Left" Height="32" Margin="49,142,0,0" VerticalAlignment="Top" Width="67" Click="Button_Click_Clients"/>
-        <Button Content="Врачи" HorizontalAlignment="Left" Height="32" Margin="49,0,0,0" VerticalAlignment="Center" Width="67" Click="Button_Click_Doctors"/>
-        <Button Content="Услуги" HorizontalAlignment="Left" Height="32" Margin="49,263,0,0" VerticalAlignment="Top" Width="67" Click="Button_Click_Services"/>
-        <Button Content="Записи" HorizontalAlignment="Left" Height="32" Margin="49,324,0,0" VerticalAlignment="Top" Width="67" Click="Button_Click_Appointments"/>
+        <Button Content="Отделения" HorizontalAlignment="Left" Height="32" Margin="49,83,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Depts"/>
+        <Button Content="Клиенты" HorizontalAlignment="Left" Height="32" Margin="49,142,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Clients"/>
+        <Button Content="Врачи" HorizontalAlignment="Left" Height="32" Margin="49,0,0,0" VerticalAlignment="Center" Width="143" Click="Button_Click_Doctors"/>
+        <Button Content="Услуги" HorizontalAlignment="Left" Height="32" Margin="49,263,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Services"/>
+        <Button Content="Записи" HorizontalAlignment="Left" Height="32" Margin="49,324,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Appointments"/>
     </Grid>
 </Window>
