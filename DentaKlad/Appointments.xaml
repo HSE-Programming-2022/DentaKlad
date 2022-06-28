@@ -5,20 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DentaKlad.Design"
         mc:Ignorable="d"
-        Title="Appointments" Height="450" Width="800">
+        Title="Appointments" Height="600" Width="1400">
     <Grid>
-        <TextBox Name="DateTimeBox" HorizontalAlignment="Left" Height="21" Margin="148,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <DataGrid Name="AptTable" HorizontalAlignment="Left" Height="188" Margin="0,236,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="548,36,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete"/>
-        <ListBox Name="Clients" HorizontalAlignment="Left" Height="47" Margin="148,36,0,0" VerticalAlignment="Top" Width="312"/>
-        <ListBox x:Name="Services" HorizontalAlignment="Left" Height="47" Margin="148,107,0,0" VerticalAlignment="Top" Width="312"/>
-        <ListBox x:Name="Doctors" HorizontalAlignment="Left" Height="47" Margin="148,171,0,0" VerticalAlignment="Top" Width="312"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="22" Margin="514,194,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_Add"/>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Дата и время"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Клиент"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Услуга"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="25" Margin="10,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Language="ru-ru" Text="Врач"/></TextBlock>
-        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="681,154,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_Edit"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Height="24" Margin="681,194,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_SaveChanges"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <StackPanel Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Дата и Время"/>
+                <TextBox Width="250" HorizontalContentAlignment="Left" x:Name="DateTimeBox" TextWrapping="Wrap" Text="TextBox"/>
+            </StackPanel>
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Клиент"/>
+                <ComboBox  Width="250" Name="Clients" HorizontalContentAlignment="Left"/>    
+            </StackPanel>
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Услуга"/>
+                <ComboBox   Width="250" x:Name="Services" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+            <StackPanel  Margin="0, 0, 0, 10" VerticalAlignment="Center" Height="30" Orientation="Horizontal" Grid.Column="0">
+                <Label Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Врач"/>
+                <ComboBox  Width="250" x:Name="Doctors" HorizontalContentAlignment="Left"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Content="Добавить" VerticalContentAlignment="Center"  Width="120" Height="40" Margin="0,0,10,0"  Click="Button_Click_Add"/>
+            <Button Content="Удалить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Delete" IsEnabled="{Binding ElementName=AptTable, Path=SelectedItems.Count}"/>
+            <Button Content="Изменить"  VerticalContentAlignment="Center" Width="120" Height="40" Margin="0,0,10,0" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=AptTable, Path=SelectedItems.Count}"/>
+            <Button Content="Сохранить" VerticalContentAlignment="Center"  Width="120" Height="40" Click="Button_Click_SaveChanges"/>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Margin="10" Grid.Row="1" Grid.ColumnSpan="2" Name="AptTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=20}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Дата и время" Binding="{Binding Path=DateAndTime, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Врач" Binding="{Binding Path=Doctor, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Клиент" Binding="{Binding Path=Client, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Услуга" Binding="{Binding Path=Service, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
