@@ -29,9 +29,9 @@
                 </TransformGroup>
             </TextBlock.RenderTransform><Run Language="ru-ru" Text="Цена"/></TextBlock>
         <DataGrid Name="ServiceTable" HorizontalAlignment="Center" Height="217" Margin="0,207,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="567,64,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="567,64,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
         <ListBox Name="Depts" HorizontalAlignment="Left" Height="47" Margin="148,92,0,0" VerticalAlignment="Top" Width="312"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="492,160,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_Edit"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="492,160,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Height="24" Margin="605,160,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_SaveChanges"/>
 
     </Grid>

@@ -26,8 +26,8 @@
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <Button Content="Добавить" Margin="10" Click="Button_Click_Add"/>
-            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit"/>
-            <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges"/>
+            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=DoctorTable, Path=SelectedItems.Count}" Cursor="Hand"/>
+            <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges" IsEnabled="{Binding ElementName=DoctorTable, Path=SelectedItems.Count}" Cursor="Hand"/>
             <Button Content="Удалить" Margin="10" Click="Button_Click_Delete"/>
         </StackPanel>
 
