@@ -94,6 +94,14 @@ namespace DentaKlad.Design
             }
         }
 
+        private bool DateTimeIsBusy()
+        {
+            string doctorName = Doctors.SelectedItem.ToString();
+            DateTime dt = DateTime.Parse(DateTimeBox.Text);
+
+            return context.Appointments.Where(a => a.DateAndTime == dt & a.Doctor.Name == doctorName).Any();
+        }
+
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
@@ -123,6 +131,10 @@ namespace DentaKlad.Design
                 if (context.Appointments.Where(a => a.DateAndTime == newApt.DateAndTime & a.Client.Name == newApt.Client.Name & a.Doctor.Name == newApt.Doctor.Name & a.Service.Name == newApt.Service.Name).Any())
                 {
                     MessageBox.Show("Информация об этой записи уже есть.");
+                }
+                else if (context.Appointments.Where(a => a.DateAndTime == newApt.DateAndTime && a.Doctor.Name == newApt.Doctor.Name).Any())
+                {
+                    MessageBox.Show("У врача уже есть запись на эту дату и время.");
                 }
                 else
                 {
@@ -155,7 +167,12 @@ namespace DentaKlad.Design
             {
                 int index = int.Parse(AptTable.SelectedItem.ToString().Split()[3].TrimEnd(','));
                 var selectedAppointment = context.Appointments.Where(a => a.Id == index).FirstOrDefault();
-                if (!AptExistsByTextBoxes() | IsTheSame(selectedAppointment))
+                
+                if (DateTimeIsBusy())
+                {
+                    MessageBox.Show("У врача уже есть запись на эту дату и время.");
+                }
+                else if (!AptExistsByTextBoxes() | IsTheSame(selectedAppointment))
                 {
                     selectedAppointment.DateAndTime = DateTime.Parse(DateTimeBox.Text);
                     selectedAppointment.Client = context.Clients.Where(c => c.Name == Clients.SelectedItem.ToString()).FirstOrDefault();
@@ -165,7 +182,7 @@ namespace DentaKlad.Design
                     DateTimeBox.Clear();
                     context.SaveChanges();
                     LoadData();
-                }
+                } 
                 else
                 {
                     MessageBox.Show("Информация об этой записи уже есть.");
