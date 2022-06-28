@@ -4,35 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DentaKlad.Design"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Services" Height="450" Width="800">
+        Title="Services" Height="600" Width="800">
     <Grid>
-        <TextBox Name="NameBox" HorizontalAlignment="Left" Height="21" Margin="148,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="PriceBox" HorizontalAlignment="Left" Height="21" Margin="148,46,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="312"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="21" Margin="365,166,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click_Add"/>
-        <TextBlock TextWrapping="Wrap" Margin="66,10,674,409" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Language="ru-ru" Text="Название"/></TextBlock>
-        <TextBlock TextWrapping="Wrap" Margin="66,49,674,370" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Language="ru-ru" Text="Цена"/></TextBlock>
-        <DataGrid Name="ServiceTable" HorizontalAlignment="Center" Height="217" Margin="0,207,0,0" VerticalAlignment="Top" Width="780" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Height="40" Margin="567,64,0,0" VerticalAlignment="Top" Width="151" Click="Button_Click_Delete" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
-        <ListBox Name="Depts" HorizontalAlignment="Left" Height="47" Margin="148,92,0,0" VerticalAlignment="Top" Width="312"/>
-        <Button Content="Изменить" HorizontalAlignment="Left" Height="24" Margin="492,160,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
-        <Button Content="Сохранить" HorizontalAlignment="Left" Height="24" Margin="605,160,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_SaveChanges"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="190*"/>
+            <RowDefinition Height="350*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="15,15,15,15">
+            <TextBox Name="NameBox" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" materialDesign:HintAssist.Hint ="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox Name="PriceBox" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" materialDesign:HintAssist.Hint ="Цена" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <ComboBox Name="Depts" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Отделение" Style="{StaticResource MaterialDesignComboBox}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Button Content="Добавить" Margin="10" Click="Button_Click_Add"/>
+            <Button Content="Изменить" Margin="10" Click="Button_Click_Edit" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
+            <Button Content="Сохранить" Margin="10" Click="Button_Click_SaveChanges" IsEnabled="{Binding ElementName=ServiceTable, Path=SelectedItems.Count}" Cursor="Hand"/>
+            <Button Content="Удалить" Margin="10" Click="Button_Click_Delete"/>
+        </StackPanel>
+        <DataGrid Name="ServiceTable" Grid.Row="2" Grid.ColumnSpan="5" Margin="10,10,10,10" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+       
     </Grid>
 </Window>
