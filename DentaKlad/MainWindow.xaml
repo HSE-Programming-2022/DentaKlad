@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DentaKlad.Design"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" Background="#3567af">
     <Grid>
-        <Button Content="Отделения" HorizontalAlignment="Left" Height="32" Margin="49,83,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Depts"/>
-        <Button Content="Клиенты" HorizontalAlignment="Left" Height="32" Margin="49,142,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Clients"/>
-        <Button Content="Врачи" HorizontalAlignment="Left" Height="32" Margin="49,0,0,0" VerticalAlignment="Center" Width="143" Click="Button_Click_Doctors"/>
-        <Button Content="Услуги" HorizontalAlignment="Left" Height="32" Margin="49,263,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Services"/>
-        <Button Content="Записи" HorizontalAlignment="Left" Height="32" Margin="49,324,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click_Appointments"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border MinWidth="200" MinHeight="50" Background="White" CornerRadius="20" Grid.Row="0" VerticalAlignment="Bottom" Margin="10">
+            <TextBlock Text="Выберите подходящий пункт" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Days"/>
+        </Border>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Top" Source="Images/Main.png" Height="188" Width="680" Margin="0,20,0,0"/>
+        <StackPanel Grid.Row="1" Margin="10">
+            <Button Content="Отделения" Height="50" Click="Button_Click_Depts"/>
+            <Button Content="Клиенты" Height="50" Click="Button_Click_Clients"/>
+            <Button Content="Врачи" Height="50" Click="Button_Click_Doctors"/>
+            <Button Content="Услуги" Height="50" Click="Button_Click_Services"/>
+            <Button Content="Записи" Height="50" Click="Button_Click_Appointments"/>
+        </StackPanel>
     </Grid>
 </Window>
